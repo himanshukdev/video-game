@@ -12,6 +12,7 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 import Counter from './Counter';
 import Box from '@material-ui/core/Box';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 
 
 const useStyles = makeStyles({
@@ -47,7 +48,7 @@ const Dashboard = () => {
         return msgTotal;
     }
     useEffect(() => {
-    
+
         if (!CheckGamesLocalStoarage()) {
             setLoading(true);
             axios.get('http://localhost:4000/games')
@@ -86,8 +87,8 @@ const Dashboard = () => {
 
     // This handler will be passed to child component to Update the like of respective game.
     const LikeManager = (numberOfLikes, id) => {
-        
-    // Update your parent state with the help of incoming id.
+
+        // Update your parent state with the help of incoming id.
         let newArray = [...post];
         const elementsIndex = post.findIndex(
             element => element.id === id
@@ -99,30 +100,30 @@ const Dashboard = () => {
 
     return (
         <>
-            <Typography gutterBottom variant="h3" component="h3" style={{ color: '#f50057' }} >
-                Nes Classic Video Games
+            <Typography gutterBottom variant="h3" component="h3" style={{ color: '#002984' }} >
+                <b><u> Nes Classic Video Games </u></b>
             </Typography>
             <div>
-                <Box display="flex" justifyContent="flex-start" m={2} >
-                    <Button variant="contained" color="secondary" onClick={() => window.location.reload(false)}>
+
+                <Box display="flex" justifyContent="center" m={2}  >
+
+                    <Button variant="contained" color="secondary" onClick={() => window.location.reload(false)} style={{marginRight: '10px'}}>
                         <RefreshIcon /> Refresh
                     </Button>
-                </Box>
 
-
-                <Box display="flex" justifyContent="flex-end" m={2} style={{ position: "relative", bottom: '30px' }}>
                     <Button variant="contained" color="secondary" mr={5} style={{ marginRight: "10px" }} >
-                        <ThumbUpAltIcon /><span style={{ marginLeft:'20px' }}>{totalLikes}</span>
+                        <ThumbUpAltIcon /><span style={{ marginLeft: '20px' }}>{totalLikes}</span>
                     </Button>
 
-                    <Button
-                        variant="contained"
+                    <Button  variant="contained"
                         color="secondary"
+                        style={{padding: '4px 25px'}}
                         onClick={() => {
-                            localStorage.clear();
-                            window.location.reload(false)
+                        localStorage.clear();
+                        window.location.reload(false)
+
                         }
-                        }><RefreshIcon />
+                        }><PowerSettingsNewIcon />
                         Reset
                     </Button>
                 </Box>
@@ -141,7 +142,7 @@ const Dashboard = () => {
                                     image={list.image}
                                     title="game"
                                 />
-                            <CardContent>
+                                <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">
                                         <div style={{ whiteSpace: "nowrap", textOverflow: "ellipsis" }}>
                                             {list.name}
