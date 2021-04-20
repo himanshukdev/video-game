@@ -14,7 +14,7 @@ app.get('/games', function(req, res){
 
 
 
-// Create a server to listen at port 8080
+// Create a server to listen at port 4000
 var server = app.listen(4000, function(){
     var host = server.address().address
     var port = server.address().port
