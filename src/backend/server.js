@@ -2,7 +2,15 @@
 var express = require('express'); // requre the express framework
 var app = express();
 var fs = require('fs'); //require file system object
+const cors = require('cors');
 
+
+// Initialize CORS middleware
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+})
 
 // Endpoint to Get a list of users
 app.get('/games', function(req, res){
